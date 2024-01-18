@@ -151,6 +151,8 @@
     <ClInclude Include="include\mf\core\collections\mffixedsizeblocks.h" />
     <ClInclude Include="include\mf\core\collections\mflist.h" />
     <ClInclude Include="include\mf\core\collections\mfobjectpooler.h" />
+    <ClInclude Include="include\mf\core\mfclassid.h" />
+    <ClInclude Include="include\mf\core\mfclassinfo.h" />
     <ClInclude Include="include\mf\core\mfstringid.h" />
     <ClInclude Include="include\mf\core\arch\mftype.h" />
   </ItemGroup>
@@ -158,6 +160,7 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\mf\core\arch\mfmalloc.cpp" />
     <ClCompile Include="src\mf\core\collections\memories\mtallocator.cpp" />
+    <ClCompile Include="src\mf\core\mfclassid.cpp" />
     <ClCompile Include="src\mf\core\mfstringid.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
