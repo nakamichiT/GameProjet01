@@ -78,6 +78,30 @@ namespace mf
 	public:
 
 		/*!
+		* @brief Create an object. If creation fails, return nullptr.
+		* @param mfFromObject: The class that called the instance creation process.
+		* @param placement: Address to use when creating.
+        *                   If omitted, MfMalloc will be used to generate the memory required for instantiation.
+		* @return Created object or nullptr.
+		*/
+		mf::MfObject* createInstance( const mf::MfObject* mfFromObject = nullptr, void* placement = nullptr );
+
+		/*!
+		* @brief Create an object. If creation fails, return nullptr.s
+		*        After creation, register the created object with mfmanager.
+		*        (*Abort object creation if the same name is already in use)
+		* @param mfManager: Managed object.
+		* @param objectName: The name used when registering the object.
+		* @param mfFromObject: The class that called the instance creation process.
+		* @param placement: Address to use when creating.
+        *                   If omitted, MfMalloc will be used to generate the memory required for instantiation.
+		* @return Created object or nullptr.
+		*/
+		mf::MfObject* createInstance( mf::MfManager* mfManager, const mf::MfStringId& name, const mf::MfObject* mfFromObject = nullptr, void* placement = nullptr );
+
+	public:
+
+		/*!
 		* @brief Verify that the specified class is the same or an inherited class
 		* @param mfClassId: Class id used for verification
 		* @return true: Same or inherited class / false: Different class

@@ -9,6 +9,7 @@
 ********************************************************/
 #include "mf/core/mfclassid.h"
 #include "mf/core/mfclassinfo.h"
+#include "mf/core/arch/mfmalloc.h"
 
 /*******************************************************
 * implement.
@@ -29,6 +30,69 @@ mf::MfClassId::MfClassId( ) :
 mf::MfClassId::MfClassId( const mf::MfClassInfo* mfClassInfo ) : 
 	mClassInfo( mfClassInfo )
 {
+}
+
+/*!
+* @brief Create an object. If creation fails, return nullptr.
+* @param mfFromObject: The class that called the instance creation process.
+* @param placement: Address to use when creating.
+*                   If omitted, MfMalloc will be used to generate the memory required for instantiation.
+* @return Created object or nullptr.
+*/
+mf::MfObject* mf::MfClassId::createInstance( const mf::MfObject* mfFromObject, void* placement ) 
+{
+	// Used to store the created instance.
+	mf::MfObject* instance = nullptr;
+
+	// Memory used when creating an instance.
+	void* memory = placement;
+
+	// Check whether you are ready to create an instance.
+	if( this->isValid() )
+	{
+		// If the memory required for instance creation is not specified, create the required memory.
+		if(memory == nullptr){
+			memory = mf::MfMalloc( this->mClassInfo->InstanceSize );
+		}
+
+		// If memory for instance creation cannot be secured, do nothing further.
+		if( memory ){
+			this->mClassInfo->CreateObjectProc(mfFromObject, placement);
+		}
+	}
+
+	return instance;
+}
+
+/*!
+* @brief Create an object. If creation fails, return nullptr.s
+*        After creation, register the created object with mfmanager.
+*        (*Abort object creation if the same name is already in use)
+* @param mfManager: Managed object.
+* @param objectName: The name used when registering the object.
+* @param mfFromObject: The class that called the instance creation process.
+* @param placement: Address to use when creating.
+*                   If omitted, MfMalloc will be used to generate the memory required for instantiation.
+* @return Created object or nullptr.
+*/
+mf::MfObject* mf::MfClassId::createInstance(mf::MfManager* mfManager, const mf::MfStringId& name, const mf::MfObject* mfFromObject, void* placement = nullptr)
+{
+	// Used to store the created instance.
+	mf::MfObject* instance = nullptr;
+
+	// Check whether objects are registered using the same name.
+	if(mfManager && mfManager->findMfObject(name) == nullptr)
+	{		
+		// Create an object only if it is not registered.
+		instance = this->createInstance(mfFromObject, placement);
+		if( instance )
+		{
+			// Register with the managed object only if the instance creation is successful.
+			mfManager->registerMfObject( name, instance );
+		}
+	}
+
+	return instance;
 }
 
 /*!
