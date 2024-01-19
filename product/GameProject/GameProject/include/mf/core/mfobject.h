@@ -63,16 +63,10 @@ mf::MfClassId Class::ClassId;\
 Class* Class::create(MF_CREATE_OBJECT_PROC_PARAMETERS){\
     Class* instance = nullptr;\
     void* memory = placement;\
-    if( memory == nullptr )\
-    {\
-        memory = mf::MfMalloc(sizeof(Class));\
-    }\
-    if( memory ){\
+    if( placement ){\
         instance = new (memory) Class(mfFromObject);\
-        if(mfManager){\
-            mfManager->registerMfObject(name, instance);\
-        }\
     }\
+    return instance;\
 }\
 
 /*!
