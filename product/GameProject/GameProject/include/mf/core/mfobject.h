@@ -28,8 +28,6 @@ private:\
     friend class mf::MfManager;\
 public:\
     static mf::MfClassId ClassId;\
-protected:\
-    void construct(const mf::MfObject* mfFromObject);\
 public:\
     mf::MfClassId getClassId()const{ return Class::ClassId };\
 
@@ -42,6 +40,8 @@ public:\
 private:\
     MF_CLASS_DECLARE(Class, ParentClass)\
     static Class* create(MF_CREATE_OBJECT_PROC_PARAMETERS);\
+protected:
+    Class(const mf::MfObject* mfFromObject);
 private:\
 
 /*!
@@ -68,8 +68,7 @@ Class* Class::create(MF_CREATE_OBJECT_PROC_PARAMETERS){\
         memory = mf::MfMalloc(sizeof(Class));\
     }\
     if( memory ){\
-        instance = new ( memory ) Class;\
-        instance->construct(mfFromObject);\
+        instance = new (memory) Class(mfFromObject);\
         if(mfManager){\
             mfManager->registerMfObject(name, instance);\
         }\
@@ -100,6 +99,14 @@ namespace mf
         * @brief Used to hold an ID that identifies the type of object.
         */
         static mf::MfClassid ClassId;
+
+    protected:
+
+        /*!
+        * @brief Constructer.
+        * @param mfFromObject: The object from which the instance is created.
+        */
+        MfObject(const mf::MfObject* mfFromObject);
 
     public:
 

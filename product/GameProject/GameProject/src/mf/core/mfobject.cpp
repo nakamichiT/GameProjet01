@@ -23,6 +23,15 @@ mf::MfClassId mf::MfObject::ClassId;
 ********************************************************/
 
 /*!
+* @brief Constructer.
+* @param mfFromObject: The object from which the instance is created.
+*/
+mf::MfObject::MfObject(const mf::MfObject* fromMfObject)
+{
+    // Nothing.
+}
+
+/*!
 * @brief Get the id that identifies the type of the class.
 * @return An id that identifies the type of the class.
 */
