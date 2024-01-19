@@ -64,3 +64,14 @@ void mf::MfSetFreeProcHandler( mf::MfFreeProcHandler mfFreeProcHandler )
 {
 	gFreeProcHandler = mfFreeProcHandler;
 }
+
+/*!
+* @brief Calculate the memory size with alignment adjustment.
+* @param size: Memory size.
+* @param alignment: Aligmnet.
+* @return Memory size after alignment adjustment.
+*/
+mf::Size_T mf::MfAdjustmentAlignment(const mf::Size_T size, const mf::Size_T alignment)
+{
+	return ( adjustmentMemorySize + ( alignment - 1 ) ) & ( ~ ( alignment - 1 ) );
+}
