@@ -30,7 +30,7 @@ namespace mf
 * @brief A macro that defines the parameters to be used when creating an object.
 */
 #define MF_CREATE_OBJECT_PROC_PARAMETERS\
-	const mf::MfObject* fromMfObject, void* placement\
+	const mf::MfObject* mfFromObject, void* placement\
 
 /*******************************************************
 * types.
@@ -114,8 +114,6 @@ namespace mf
 		* @return true: same class / false: different class
 		*/
 		bool isEqual( const mf::MfClassId& mfClassId )const;
-
-	public:
 
 		/*!
 		* @brief Verify that it is a valid class id object.
