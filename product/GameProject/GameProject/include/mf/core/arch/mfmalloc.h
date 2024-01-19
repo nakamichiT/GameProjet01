@@ -21,6 +21,11 @@
 ********************************************************/
 namespace mf
 {
+	/*!
+	* @brief Alignment. 
+	*        Used to adjust the amount of memory requested. (*Storing the value to the power of 2!)
+	*/
+	static const mf::Size_T MF_ALIGNMENT = 8;
 
 	/*!
 	* @brief Type used to hold functions for memory allocation.
@@ -48,15 +53,23 @@ namespace mf
 
 	/*!
 	* @brief Register memory allocation functions.
-	* @param Memory allocation functions.
+	* @param mtMallocProcHandler: Memory allocation functions.
 	*/
 	void MfSetMallocProcHandler( mf::MfMallocProcHandler mtMallocProcHandler );
 
 	/*!
 	* @brief Register a memory destruction function.
-	* @param Memory destruction function.
+	* @param mfFreeProcHandler: Memory destruction function.
 	*/
 	void MfSetFreeProcHandler( mf::MfFreeProcHandler mfFreeProcHandler );
+
+	/*!
+	* @brief Calculate the memory size with alignment adjustment.
+	* @param size: Memory size.
+	* @param alignment: Aligmnet.
+	* @return Memory size after alignment adjustment.
+	*/
+	mf::Size_T MfAdjustmentAlignment(const mf::Size_T size, const mf::Size_T alignment = mf::MF_ALIGNMENT);
 
 }
 
