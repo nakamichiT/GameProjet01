@@ -12,6 +12,7 @@
 ********************************************************/
 #include "mf/core/arch/mftype.h"
 #include "mf/core/mfclassid.h"
+#include "mf/core/arch/mfnew.h"
 
 /*******************************************************
 * macro.
@@ -28,8 +29,10 @@ private:\
     friend class mf::MfManager;\
 public:\
     static mf::MfClassId ClassId;\
+protected:\
+    Class(const mf::MfObject* mfFromObject);\
 public:\
-    mf::MfClassId getClassId()const{ return Class::ClassId };\
+    mf::MfClassId getClassId()const{ return Class::ClassId; }\
 
 /*!
 * @brief Macro for defining the members and methods required for instantiable classes.
@@ -40,8 +43,6 @@ public:\
 private:\
     MF_CLASS_DECLARE(Class, ParentClass)\
     static Class* create(MF_CREATE_OBJECT_PROC_PARAMETERS);\
-protected:\
-    Class(const mf::MfObject* mfFromObject);\
 private:\
 
 /*!
