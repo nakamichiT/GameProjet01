@@ -85,7 +85,7 @@ namespace mf
 
 				MfListIterator operator++( int )
 				{
-					MfListNode itr = *this;
+					MfListIterator itr = *this;
 					++*this;
 					return itr;
 				}
@@ -97,7 +97,7 @@ namespace mf
 
 				MfListIterator operator--( int )
 				{
-					MfListNode itr = *this;
+					MfListIterator itr = *this;
 					--*this;
 					return itr;
 				}
@@ -117,7 +117,7 @@ namespace mf
 					return this->mNode->value;
 				}
 
-				T* operator*( )
+				T& operator*( )
 				{
 					return this->mNode->value;
 				}
@@ -359,6 +359,16 @@ namespace mf
 				// The terminal node is assumed to be the first node.
 				this->mHeadNode = this->mLastNode;
 
+			}
+
+			inline MfListIterator begin( )const
+			{
+				return { this->mHeadNode };
+			}
+
+			inline MfListIterator end( )const
+			{
+				return { this->mLastNode };
 			}
 
 		public:
