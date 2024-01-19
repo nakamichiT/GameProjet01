@@ -30,7 +30,7 @@ namespace mf
 * @brief A macro that defines the parameters to be used when creating an object.
 */
 #define MF_CREATE_OBJECT_PROC_PARAMETERS\
-	mf::MfManager* mfManager, const mf::MfObject* fromMfObject, void* placement\
+	mf::MfManager* mfManager, const char* name, const mf::MfObject* fromMfObject, void* placement\
 
 /*******************************************************
 * types.
