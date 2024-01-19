@@ -308,7 +308,7 @@ namespace mf
 
 						// Iteration list node concatenation.
 						node->previousNode = this->mLastNode->previousNode;
-						this->mLastNode->previousNode->next = node;
+						this->mLastNode->previousNode->nextNode = node;
 
 						node->nextNode = this->mLastNode;
 						this->mLastNode->previousNode = node;
