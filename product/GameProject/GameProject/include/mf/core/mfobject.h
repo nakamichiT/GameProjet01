@@ -14,6 +14,76 @@
 #include "mf/core/mfclassid.h"
 
 /*******************************************************
+* macro.
+********************************************************/
+
+/*!
+* @brief Macros for defining common members and methods.
+* Class: Specify the class to be defined.
+* ParentClass: Specify the parent class of the class to be defined.
+*/
+#define MF_CLASS_DECLARE(Class, ParentClass)\
+private:\
+    using Parent = ParentClass;\
+    friend class mf::MfManager;\
+public:\
+    static mf::MfClassId ClassId;\
+protected:\
+    void construct(const mf::MfObject* mfFromObject);\
+public:\
+    mf::MfClassId getClassId()const{ return Class::ClassId };\
+
+/*!
+* @brief Macro for defining the members and methods required for instantiable classes.
+* Class: Specify the class to be defined.
+* ParentClass: Specify the parent class of the class to be defined.
+*/
+#define MF_OBJECT_DECLARE(Class, ParentClass)\
+private:\
+    MF_CLASS_DECLARE(Class, ParentClass)\
+    static Class* create(MF_CREATE_OBJECT_PROC_PARAMETERS);\
+private:\
+
+/*!
+* @brief Macro for defining members and methods in classes for which instantiation is prohibited.
+* Class: Specify the class to be defined.
+* ParentClass: Specify the parent class of the class to be defined.
+*/
+#define MF_ABSTRACT_OBJECT_DECLARE(Class, ParentClass)\
+private:\
+    MF_CLASS_DECLARE(Class, ParentClass)\
+    static mf::MfCreateObjectProc create;\
+private:\
+
+/*!
+* @brief A macro that defines common methods for instantiable classes.
+*/
+#define MF_OBJECT_IMPLEMENT(Class)\
+mf::MfClassId Class::ClassId;\
+Class* Class::create(MF_CREATE_OBJECT_PROC_PARAMETERS){\
+    Class* instance = nullptr;\
+    void* memory = placement;\
+    if( memory == nullptr )\
+    {\
+        memory = mf::MfMalloc(sizeof(Class));\
+    }\
+    if( memory ){\
+        instance = new ( memory ) Class;\
+        instance->construct(mfFromObject);\
+        if(mfManager){\
+            mfManager->registerMfObject(name, instance);\
+        }\
+    }\
+}\
+
+/*!
+* @brief A macro that defines common processing for classes that prohibit the creation of instances.
+*/
+#define MF_ABSTRACT_OBJECT_IMPLEMENT(Class)\
+mf::MfClassId Class::ClassId;\
+mf::MfCreateObjectProc Class::create = nullptr;\
+
+/*******************************************************
 * implement.
 ********************************************************/
 
