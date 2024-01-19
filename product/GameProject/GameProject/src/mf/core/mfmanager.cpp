@@ -74,7 +74,7 @@ bool mf::MfManager::registerMfObject(const char* objectName, mf::MfObject* mfObj
 * @return The registered object. 
 *         (*Returns nullptr if no object is registered with the specified name)
 */
-mf::MfObject* mf::MfManager::unregisterMfObject(const char* mf::MfStringId& objectName)
+mf::MfObject* mf::MfManager::unregisterMfObject(const char* objectName)
 {
     return nullptr;
 }

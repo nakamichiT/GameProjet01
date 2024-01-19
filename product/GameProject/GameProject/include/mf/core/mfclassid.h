@@ -30,7 +30,7 @@ namespace mf
 * @brief A macro that defines the parameters to be used when creating an object.
 */
 #define MF_CREATE_OBJECT_PROC_PARAMETERS\
-	mf::MfManager* mfManager, const char* name, const mf::MfObject* fromMfObject, void* placement\
+	const mf::MfObject* fromMfObject, void* placement\
 
 /*******************************************************
 * types.
@@ -97,7 +97,7 @@ namespace mf
         *                   If omitted, MfMalloc will be used to generate the memory required for instantiation.
 		* @return Created object or nullptr.
 		*/
-		mf::MfObject* createInstance( mf::MfManager* mfManager, const mf::MfStringId& name, const mf::MfObject* mfFromObject = nullptr, void* placement = nullptr );
+		mf::MfObject* createInstance( mf::MfManager* mfManager, const char* name, const mf::MfObject* mfFromObject = nullptr, void* placement = nullptr );
 
 	public:
 

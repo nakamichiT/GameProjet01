@@ -153,6 +153,9 @@
     <ClInclude Include="include\mf\core\collections\mfobjectpooler.h" />
     <ClInclude Include="include\mf\core\mfclassid.h" />
     <ClInclude Include="include\mf\core\mfclassinfo.h" />
+    <ClInclude Include="include\mf\core\mfcreatemanagerdesc.h" />
+    <ClInclude Include="include\mf\core\mfmanager.h" />
+    <ClInclude Include="include\mf\core\mfobject.h" />
     <ClInclude Include="include\mf\core\mfstringid.h" />
     <ClInclude Include="include\mf\core\arch\mftype.h" />
   </ItemGroup>
@@ -161,6 +164,8 @@
     <ClCompile Include="src\mf\core\arch\mfmalloc.cpp" />
     <ClCompile Include="src\mf\core\collections\memories\mtallocator.cpp" />
     <ClCompile Include="src\mf\core\mfclassid.cpp" />
+    <ClCompile Include="src\mf\core\mfmanager.cpp" />
+    <ClCompile Include="src\mf\core\mfobject.cpp" />
     <ClCompile Include="src\mf\core\mfstringid.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

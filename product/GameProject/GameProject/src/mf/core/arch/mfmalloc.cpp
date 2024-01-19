@@ -73,5 +73,5 @@ void mf::MfSetFreeProcHandler( mf::MfFreeProcHandler mfFreeProcHandler )
 */
 mf::Size_T mf::MfAdjustmentAlignment(const mf::Size_T size, const mf::Size_T alignment)
 {
-	return ( adjustmentMemorySize + ( alignment - 1 ) ) & ( ~ ( alignment - 1 ) );
+	return ( size + ( alignment - 1 ) ) & ( ~ ( alignment - 1 ) );
 }

@@ -10,7 +10,7 @@
 /*******************************************************
 * include file
 ********************************************************/
-#include "mf/core/mftypes.h"
+#include "mf/core/arch/mftype.h"
 
 /*******************************************************
 * implements.
@@ -20,7 +20,7 @@ namespace mf
     /*!
     * @brief A structure that holds parameters for creating managed objects.
     */
-    struct MfCreateManagerDesc 
+    struct MfCreateManagerDesc
     {
         /*!
         * @brief Number of classes that can be registered.
@@ -30,7 +30,7 @@ namespace mf
         * @brief Number of objects that can be registered.
         */
         mf::Int32 RegisteredObjects = 20;
-    }
+    };
 }
 
 #endif

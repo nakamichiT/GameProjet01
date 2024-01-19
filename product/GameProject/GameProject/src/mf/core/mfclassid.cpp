@@ -10,6 +10,7 @@
 #include "mf/core/mfclassid.h"
 #include "mf/core/mfclassinfo.h"
 #include "mf/core/arch/mfmalloc.h"
+#include "mf/core/mfmanager.h"
 
 /*******************************************************
 * implement.
@@ -75,17 +76,17 @@ mf::MfObject* mf::MfClassId::createInstance( const mf::MfObject* mfFromObject, v
 *                   If omitted, MfMalloc will be used to generate the memory required for instantiation.
 * @return Created object or nullptr.
 */
-mf::MfObject* mf::MfClassId::createInstance(mf::MfManager* mfManager, const mf::MfStringId& name, const mf::MfObject* mfFromObject, void* placement = nullptr)
+mf::MfObject* mf::MfClassId::createInstance( mf::MfManager* mfManager, const char* name, const mf::MfObject* mfFromObject, void* placement )
 {
 	// Used to store the created instance.
 	mf::MfObject* instance = nullptr;
 
 	// Check whether objects are registered using the same name.
-	if(mfManager && mfManager->findMfObject(name) == nullptr)
-	{		
+	if ( mfManager && mfManager->findMfObject( name ) == nullptr )
+	{
 		// Create an object only if it is not registered.
-		instance = this->createInstance(mfFromObject, placement);
-		if( instance )
+		instance = this->createInstance( mfFromObject, placement );
+		if ( instance )
 		{
 			// Register with the managed object only if the instance creation is successful.
 			mfManager->registerMfObject( name, instance );

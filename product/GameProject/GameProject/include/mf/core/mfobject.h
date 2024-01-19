@@ -10,7 +10,7 @@
 /*******************************************************
 * include file
 ********************************************************/
-#include "mf/core/mftype.h"
+#include "mf/core/arch/mftype.h"
 #include "mf/core/mfclassid.h"
 
 /*******************************************************
@@ -40,8 +40,8 @@ public:\
 private:\
     MF_CLASS_DECLARE(Class, ParentClass)\
     static Class* create(MF_CREATE_OBJECT_PROC_PARAMETERS);\
-protected:
-    Class(const mf::MfObject* mfFromObject);
+protected:\
+    Class(const mf::MfObject* mfFromObject);\
 private:\
 
 /*!
@@ -88,11 +88,11 @@ namespace mf
     class MfObject
     {
     public:
-        
+
         /*!
         * @brief Used to hold an ID that identifies the type of object.
         */
-        static mf::MfClassid ClassId;
+        static mf::MfClassId ClassId;
 
     protected:
 
@@ -100,7 +100,7 @@ namespace mf
         * @brief Constructer.
         * @param mfFromObject: The object from which the instance is created.
         */
-        MfObject(const mf::MfObject* mfFromObject);
+        MfObject( const mf::MfObject* mfFromObject );
 
     public:
 
@@ -108,9 +108,9 @@ namespace mf
         * @brief Get the id that identifies the type of the class.
         * @return An id that identifies the type of the class.
         */
-        virtual mf::MfClassId getClassId()const;
+        virtual mf::MfClassId getClassId( )const;
 
-    }
+    };
 }
 
 #endif
