@@ -84,7 +84,7 @@ namespace mf
         *                   If omitted, MfMalloc will be used to generate the memory required for instantiation.
 		* @return Created object or nullptr.
 		*/
-		mf::MfObject* createInstance( const mf::MfObject* mfFromObject = nullptr, void* placement = nullptr );
+		mf::MfObject* createInstance( const mf::MfObject* mfFromObject = nullptr, void* placement = nullptr )const;
 
 		/*!
 		* @brief Create an object. If creation fails, return nullptr.s
@@ -97,7 +97,7 @@ namespace mf
         *                   If omitted, MfMalloc will be used to generate the memory required for instantiation.
 		* @return Created object or nullptr.
 		*/
-		mf::MfObject* createInstance( mf::MfManager* mfManager, const char* name, const mf::MfObject* mfFromObject = nullptr, void* placement = nullptr );
+		mf::MfObject* createInstance( mf::MfManager* mfManager, const char* name, const mf::MfObject* mfFromObject = nullptr, void* placement = nullptr )const;
 
 	public:
 

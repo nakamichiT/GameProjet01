@@ -40,7 +40,7 @@ mf::MfClassId::MfClassId( const mf::MfClassInfo* mfClassInfo ) :
 *                   If omitted, MfMalloc will be used to generate the memory required for instantiation.
 * @return Created object or nullptr.
 */
-mf::MfObject* mf::MfClassId::createInstance( const mf::MfObject* mfFromObject, void* placement ) 
+mf::MfObject* mf::MfClassId::createInstance( const mf::MfObject* mfFromObject, void* placement ) const
 {
 	// Used to store the created instance.
 	mf::MfObject* instance = nullptr;
@@ -76,7 +76,7 @@ mf::MfObject* mf::MfClassId::createInstance( const mf::MfObject* mfFromObject, v
 *                   If omitted, MfMalloc will be used to generate the memory required for instantiation.
 * @return Created object or nullptr.
 */
-mf::MfObject* mf::MfClassId::createInstance( mf::MfManager* mfManager, const char* name, const mf::MfObject* mfFromObject, void* placement )
+mf::MfObject* mf::MfClassId::createInstance( mf::MfManager* mfManager, const char* name, const mf::MfObject* mfFromObject, void* placement ) const
 {
 	// Used to store the created instance.
 	mf::MfObject* instance = nullptr;
