@@ -349,8 +349,8 @@ namespace mf
 					MfListNode* nextNode = listNode->nextNode;
 
 					// Release the memory allocated to the node.
-					listNode->~MtListNode( );
-					this->mListNodePooler( listNode );
+					listNode->~MfListNode( );
+					this->mListNodePooler.deallocate( listNode );
 
 					// Replace to delete the next node.
 					listNode = nextNode;
