@@ -404,14 +404,13 @@ namespace mf
 			*/
 			void containts( const Key& key, Val* val )
 			{
-				// 要素の挿入場所を格納するために使用する
-				// （※今回は使用しない）
+				// Used store seach end node.
 				MfDictionaryNode* position = nullptr;
 
-				// 同じキー名のノードを取得する
+				// Find node.
 				if ( MfDictionaryNode* node = this->internalIsExistKey( key, position ) )
 				{
-					val = &node->value;
+					*val = node->value;
 				}
 			}
 
