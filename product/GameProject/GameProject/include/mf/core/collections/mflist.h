@@ -244,7 +244,7 @@ namespace mf
 				if ( void* nodeMemory = this->mListNodePooler.allocate( ) )
 				{
 					// Creation of the node to be inserted.
-					MfListNode* insertNode = new ( nodeMemory ) MfListNode( );
+					MfListNode* insertNode = new ( nodeMemory ) MfListNode;
 					insertNode->value = value;
 
 					// Update the connection of the node to be inserted.
