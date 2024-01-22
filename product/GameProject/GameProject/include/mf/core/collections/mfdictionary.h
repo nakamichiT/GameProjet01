@@ -468,7 +468,7 @@ namespace mf
 				return { this->mHeadNode };
 			}
 
-			MfDictionaryNode end( )const
+			MfDictionaryIterator end( )const
 			{
 				return { this->mLastNode };
 			}
