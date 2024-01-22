@@ -14,7 +14,7 @@
 #include "mf/core/mfstringid.h"
 #include "mf/core/mfclassid.h"
 #include "mf/core/mfcreatemanagerdesc.h"
-#include "mf/core/collections/mfdictionary.h"
+
 
 /*******************************************************
 * implements.
