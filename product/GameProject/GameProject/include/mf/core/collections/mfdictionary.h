@@ -402,7 +402,7 @@ namespace mf
 			* @param key: Key of the node to be retrieved
 			* @param val: Used to store values obtained from nodes.
 			*/
-			void containts( const Key& key, Val* val )
+			void containts( const Key& key, Val* val )const
 			{
 				// Used store seach end node.
 				MfDictionaryNode* position = nullptr;
