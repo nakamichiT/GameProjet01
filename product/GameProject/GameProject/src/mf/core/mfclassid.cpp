@@ -58,7 +58,7 @@ mf::MfObject* mf::MfClassId::createInstance( const mf::MfObject* mfFromObject, v
 
 		// If memory for instance creation cannot be secured, do nothing further.
 		if( memory ){
-			this->mClassInfo->CreateObjectProc(mfFromObject, placement);
+			instance = this->mClassInfo->CreateObjectProc(mfFromObject, memory);
 		}
 	}
 
