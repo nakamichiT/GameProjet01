@@ -71,7 +71,7 @@ namespace mf
         {
             if ( this->mImplement && T::ClassId.isValid( ) == false )
             {
-                T::ClassId = this->internalRegisterMfClass( className, sizeof( T ), T::ParentClass::ClassId, (mf::MfCreateObjectProc)T::create );
+                T::ClassId = this->internalRegisterMfClass( className, sizeof( T ), T::Parent::ClassId, (mf::MfCreateObjectProc)T::create );
             }
             return T::ClassId;
         }
