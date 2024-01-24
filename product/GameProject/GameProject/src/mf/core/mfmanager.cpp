@@ -55,6 +55,13 @@ public:
             mf::MfFree( ( *itr ).value );
             ( *itr ).value = nullptr;
         }
+
+        // Scan for all registered objects.
+        for ( auto itr = this->mObjects.begin( ); itr != this->mObjects.end( ); itr++ )
+        {
+            // Discard object.
+            mf::MfDelete<mf::MfObject>( ( *itr ).value );
+        }
     }
 
 public:
@@ -171,6 +178,7 @@ bool mf::MfManager::create( const mf::MfCreateManagerDesc& mfCreateManagerDesc, 
             // Set the created class information to mf::MfObject.
             mf::MfObject::ClassId = mf::MfClassId( classInfo );
 
+            mfManager->mImplement = implement;
             result = true;
         }
     }
