@@ -25,6 +25,7 @@
 */
 #define MF_CLASS_DECLARE(Class, ParentClass)\
 private:\
+    MF_FRIEND_NEW()\
     using Parent = ParentClass;\
     friend class mf::MfManager;\
 public:\
@@ -32,6 +33,7 @@ public:\
 protected:\
     Class(const mf::MfObject* mfFromObject);\
 public:\
+    ~Class();\
     mf::MfClassId getClassId()const{ return Class::ClassId; }\
 
 /*!
@@ -42,8 +44,8 @@ public:\
 #define MF_OBJECT_DECLARE(Class, ParentClass)\
 private:\
     MF_CLASS_DECLARE(Class, ParentClass)\
-    static Class* create(MF_CREATE_OBJECT_PROC_PARAMETERS);\
 private:\
+    static Class* create(MF_CREATE_OBJECT_PROC_PARAMETERS);\
 
 /*!
 * @brief Macro for defining members and methods in classes for which instantiation is prohibited.
@@ -53,8 +55,8 @@ private:\
 #define MF_ABSTRACT_OBJECT_DECLARE(Class, ParentClass)\
 private:\
     MF_CLASS_DECLARE(Class, ParentClass)\
-    static mf::MfCreateObjectProc create;\
 private:\
+    static mf::MfCreateObjectProc create;\
 
 /*!
 * @brief A macro that defines common methods for instantiable classes.
@@ -63,9 +65,8 @@ private:\
 mf::MfClassId Class::ClassId;\
 Class* Class::create(MF_CREATE_OBJECT_PROC_PARAMETERS){\
     Class* instance = nullptr;\
-    void* memory = placement;\
     if( placement ){\
-        instance = new (memory) Class(mfFromObject);\
+        instance = new (placement) Class(mfFromObject);\
     }\
     return instance;\
 }\
@@ -102,6 +103,13 @@ namespace mf
         * @param mfFromObject: The object from which the instance is created.
         */
         MfObject( const mf::MfObject* mfFromObject );
+
+    public:
+
+        /*!
+        * @brief Destructer.
+        */
+        virtual ~MfObject( ) = default;
 
     public:
 
