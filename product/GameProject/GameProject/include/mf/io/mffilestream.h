@@ -66,12 +66,19 @@ namespace mf
         public:
 
             /*!
+            * @brief Destructer.
+            */
+            virtual ~MfFileStream() = default;
+
+        public:
+
+            /*!
             * @brief Read file data while synchronizing.
             * @param buffer: Buffer for storing data
             * @param bufferSize: The size of the buffer used to store data.
             * @return Read data size.
             */
-            mf::Size_T read(char* buffer ,const f::Size_T bufferSize);
+            mf::Size_T read(char* buffer ,const mf::Size_T bufferSize);
 
         public:
 
