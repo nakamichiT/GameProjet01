@@ -24,6 +24,7 @@ mf::io::MfFileStream::MfFileStream() :
 
 /*!
 * @brief Constructer.
+* @param mfFileAccessor: File control object.
 */
 mf::io::MfFileStream::MfFileStream(mf::io::MfFileAccessor* mfFileAccessor) : 
     mFileAccessor(mfFileAccessor)
