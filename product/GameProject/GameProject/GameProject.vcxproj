@@ -158,6 +158,12 @@
     <ClInclude Include="include\mf\core\mfobject.h" />
     <ClInclude Include="include\mf\core\mfstringid.h" />
     <ClInclude Include="include\mf\core\arch\mftype.h" />
+    <ClInclude Include="include\mf\io\mffile.h" />
+    <ClInclude Include="include\mf\io\mffileaccess.h" />
+    <ClInclude Include="include\mf\io\mffileaccessor.h" />
+    <ClInclude Include="include\mf\io\mffiledatatype.h" />
+    <ClInclude Include="include\mf\io\mffilehandler.h" />
+    <ClInclude Include="include\mf\io\mffilestream.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
@@ -167,6 +173,9 @@
     <ClCompile Include="src\mf\core\mfmanager.cpp" />
     <ClCompile Include="src\mf\core\mfobject.cpp" />
     <ClCompile Include="src\mf\core\mfstringid.cpp" />
+    <ClCompile Include="src\mf\io\mffile.cpp" />
+    <ClCompile Include="src\mf\io\mffileaccessor.cpp" />
+    <ClCompile Include="src\mf\io\mffilestream.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -9,6 +9,7 @@
 ********************************************************/
 #include "mf/io/mffile.h"
 #include "mf/io/mffileaccessor.h"
+#include "mf/core/arch/mfnew.h"
 #include <cstdio>
 
 /*******************************************************
@@ -68,7 +69,7 @@ public:
     */    
     mf::Size_T read( char* buffer, const mf::Size_T bufferSize )
     {
-        this->read(buffer, bufferSize, "r");
+        return MfFileReader::read( buffer, bufferSize, "r" );
     }
 };
 
@@ -81,7 +82,7 @@ public:
     * @param filePath: Path of the file to be handled
     */
     MfBinFileReader(const char* filePath) :
-        MfBinFileReader(filePath)
+        MfFileReader(filePath)
     {
     }
 
@@ -95,7 +96,7 @@ public:
     */    
     mf::Size_T read( char* buffer, const mf::Size_T bufferSize )
     {
-        this->read(buffer, bufferSize, "rb");
+        return MfFileReader::read(buffer, bufferSize, "rb");
     }
 };
 
@@ -111,7 +112,7 @@ mf::io::MfFileStream mf::io::MfFile::OpenRead(const char* filePath, const mf::io
     mf::io::MfFileAccessor* mfFileAccessor = nullptr;
 
     // Check if the file to be read exists.
-    if(mf::io::MfFile::isExist( ) == true)
+    if( mf::io::MfFile::isExist( filePath ) == true)
     {
         switch(fileDataType)
         {
@@ -124,7 +125,7 @@ mf::io::MfFileStream mf::io::MfFile::OpenRead(const char* filePath, const mf::io
         }
     }
 
-    return mf::io::MfFileAccessor(mffileaccessor);
+    return mf::io::MfFileStream( mfFileAccessor );
 }
 
 /*!

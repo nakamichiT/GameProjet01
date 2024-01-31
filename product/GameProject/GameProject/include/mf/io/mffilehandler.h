@@ -30,7 +30,7 @@ namespace mf
             /*!
             * @brief Used to hold a handle to a file object
             */
-            const mf::MfObjectId Handle;
+            const mf::ObjectId Handle;
 
         public:
 
@@ -46,7 +46,7 @@ namespace mf
             * @brief Constructer.
             * @param handle:
             */
-            inline MfFileHandler(const mf::MfObjectId handle) :
+            inline MfFileHandler(const mf::ObjectId handle) :
                 Handle(handle)
             {
             }

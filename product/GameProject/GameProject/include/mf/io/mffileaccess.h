@@ -23,11 +23,11 @@ namespace mf
         /*!
         * @brief File access types.
         */
-        enum class MfFileAccess 
+        enum class MfFileAccess
         {
             Write,
             Read
-        }
+        };
     }
 }
 

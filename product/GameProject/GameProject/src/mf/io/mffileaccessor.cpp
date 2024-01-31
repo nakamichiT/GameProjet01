@@ -30,6 +30,5 @@ mf::io::MfFileAccessor::MfFileAccessor(const char* filePath) :
 */
 mf::Size_T mf::io::MfFileAccessor::read(char* buffer, const mf::Size_T bufferSize)
 {
-    static_assert();
     return 0;
 }

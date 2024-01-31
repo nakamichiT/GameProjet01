@@ -31,7 +31,7 @@ namespace mf
             */ 
             const char* mFilePath;
 
-        private:
+        protected:
 
             /*!
             * @brief Constructer.
